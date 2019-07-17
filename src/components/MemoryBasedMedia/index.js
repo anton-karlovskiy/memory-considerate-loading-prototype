@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import { useMemoryStatus } from '../../utils/hooks';
 import './memory-based-media.css';
@@ -8,6 +8,7 @@ const MemoryBasedMedia = () => {
    const memoryStatus = useMemoryStatus();
 
   console.log('[MemoryBasedMedia] memoryStatus => ', memoryStatus);
+  if (!memoryStatus) return <Fragment>Loading...</Fragment>;
 
   let media = null;
   // switch(true) {

@@ -1,20 +1,15 @@
 import React from 'react';
 
-import MemoryBasedMedia from './components/MemoryBasedMedia';
-// ray test touch <
-import WebGLCar from './components/WebGLCar';
-// ray test touch >
+import MemoryBasedMedia from './containers/MemoryBasedMedia';
+
 import './App.css';
 
 const App = () => {
   return (
     <div className="App">
-      {/* ray test touch < */}
-      {/* <header className="App-header">
+      <header className="App-header">
         <MemoryBasedMedia />
-      </header> */}
-      <WebGLCar />
-      {/* ray test touch > */}
+      </header>
     </div>
   );
 };

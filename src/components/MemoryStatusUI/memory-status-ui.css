@@ -9,6 +9,12 @@
   font-size: 1.5rem;
 }
 
+.notice {
+  color: white;
+  text-align: left;
+  margin-bottom: 24px;
+}
+
 .list-item {
   width: 100%;
   display: flex;

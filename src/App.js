@@ -1,6 +1,6 @@
 import React from 'react';
 
-import MemoryBasedMedia from './containers/MemoryBasedMedia';
+import MemoryBasedModelViewer from './containers/MemoryBasedModelViewer';
 
 import './App.css';
 
@@ -8,7 +8,7 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <MemoryBasedMedia />
+        <MemoryBasedModelViewer />
       </header>
     </div>
   );

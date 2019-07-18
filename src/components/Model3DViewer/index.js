@@ -2,10 +2,10 @@
 import React from 'react';
 import '@google/model-viewer';
 
-import './model-viewer.css';
+import './model-3d-viewer.css';
 import astronaut from '../../assets/models/astronaut/astronaut.glb';
 
-const ModelViewer = () => {
+const Model3DViewer = () => {
   return (
     <model-viewer
       width='600px'
@@ -22,4 +22,4 @@ const ModelViewer = () => {
   );
 };
 
-export default ModelViewer;
+export default Model3DViewer;

@@ -27,7 +27,7 @@ const ModelViewer = ({ src, fallbackSrc, memoryStatus }) => {
       break;
     default:
       viewer = (
-        <Suspense fallback={Loading}>
+        <Suspense fallback={<Loading />}>
           <LazyModel3DViewer src={src} />
         </Suspense>
       );

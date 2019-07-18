@@ -14,15 +14,19 @@ const isMemorySupported = () => {
 const useMemoryStatus = () => {
   const [memoryStatus, setMemoryStatus] = useState(null);
 
+  const getTotalJSHeapSize = () => windowPerformance.memory.totalJSHeapSize;
+  const getUsedJSHeapSize = () => windowPerformance.memory.usedJSHeapSize;
+  const getJSHeapSizeLimit = () => windowPerformance.memory.jsHeapSizeLimit;
+
   const getOverUsedMemorySize = () => {
-    const usedJSHeapSize = windowPerformance.memory.usedJSHeapSize;
+    const usedJSHeapSize = getUsedJSHeapSize();
     const overUsedMemorySize = usedJSHeapSize - MAX_MEMORY_LIMIT;
     return overUsedMemorySize;
   };
 
   const getUsedMemoryPercent = () => {
-    const usedJSHeapSize = windowPerformance.memory.usedJSHeapSize;
-    const jsHeapSizeLimit = windowPerformance.memory.jsHeapSizeLimit;
+    const usedJSHeapSize = getUsedJSHeapSize();
+    const jsHeapSizeLimit = getJSHeapSizeLimit();
     const usedMemoryPercent = usedJSHeapSize / jsHeapSizeLimit * 100;
     return usedMemoryPercent;
   };
@@ -30,6 +34,9 @@ const useMemoryStatus = () => {
   useEffect(() => {
     if (isMemorySupported()) {
       setMemoryStatus({
+        totalJSHeapSize: getTotalJSHeapSize(),
+        usedJSHeapSize: getUsedJSHeapSize(),
+        jsHeapSizeLimit: getJSHeapSizeLimit(),
         overUsedMemorySize: getOverUsedMemorySize(),
         usedMemoryPercent: getUsedMemoryPercent()
       });

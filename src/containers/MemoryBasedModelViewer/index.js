@@ -1,6 +1,7 @@
 
 import React, { Fragment, lazy, Suspense } from 'react';
 
+import MemoryStatusUI from '../../components/MemoryStatusUI';
 import { useMemoryStatus } from '../../utils/hooks';
 import './memory-based-media.css';
 
@@ -21,31 +22,29 @@ const MemoryBasedModelViewer = () => {
     case usedMemoryPercent > 75:
       media = (
         <Suspense fallback={Loading}>
-          <Model3DViewer />
+          <ModelImageViewer />
         </Suspense>
       );
       break;
     case usedMemoryPercent > 0:
       media = (
         <Suspense fallback={Loading}>
-          <ModelImageViewer />
+          <Model3DViewer />
         </Suspense>
       );
       break;
     default:
       media = (
-        <Fragment>
-          <span>{memoryStatus}</span>
-          <Suspense fallback={Loading}>
-            <Model3DViewer />
-          </Suspense>
-        </Fragment>
+        <Suspense fallback={Loading}>
+          <Model3DViewer />
+        </Suspense>
       );
       break;
   }
 
   return (
     <div className='root-frame'>
+      <MemoryStatusUI {...memoryStatus} />
       {media}
     </div>
   );

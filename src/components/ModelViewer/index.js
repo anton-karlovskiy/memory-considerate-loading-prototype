@@ -1,5 +1,4 @@
 
-// ray test touch <
 import React, { Fragment, Suspense, lazy } from 'react';
 
 import Loading from '../Loading';
@@ -14,14 +13,14 @@ const ModelViewer = ({ src, fallbackSrc, memoryStatus }) => {
   switch(true) {
     case usedMemoryPercent > 75:
       viewer = (
-        <Suspense fallback={Loading}>
+        <Suspense fallback={<Loading />}>
           <LazyModelImageViewer src={fallbackSrc} />
         </Suspense>
       );
       break;
     case usedMemoryPercent > 0:
       viewer = (
-        <Suspense fallback={Loading}>
+        <Suspense fallback={<Loading />}>
           <LazyModel3DViewer src={src} />
         </Suspense>
       );
@@ -43,4 +42,3 @@ const ModelViewer = ({ src, fallbackSrc, memoryStatus }) => {
 };
 
 export default ModelViewer;
-// ray test touch >

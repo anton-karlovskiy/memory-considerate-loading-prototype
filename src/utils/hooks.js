@@ -43,6 +43,7 @@ const useMemoryStatus = () => {
     } else {
       setMemoryStatus({unsupportMessage});
     }
+  // eslint-disable-next-line
   }, []);
 
   return memoryStatus;

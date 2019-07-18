@@ -41,7 +41,7 @@ const useMemoryStatus = () => {
         usedMemoryPercent: getUsedMemoryPercent()
       });
     } else {
-      setMemoryStatus(unsupportMessage);
+      setMemoryStatus({unsupportMessage});
     }
   }, []);
 

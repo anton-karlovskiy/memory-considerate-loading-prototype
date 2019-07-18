@@ -1,7 +1,7 @@
 
-# Demo: Memory-based resource loading in React
+# Demo: Memory-considerate resource loading in React
 
-A demo showing how to use memory-based resource loading in React.
+A demo showing how to use memory-considerate resource loading in React.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -10,7 +10,7 @@ If you give it a try in your browser console, you may notice that the numbers of
 
 ## Installation
 ```
-git clone https://github.com/anton-karlovskiy/memory-based-loading.git
+git clone https://github.com/anton-karlovskiy/memory-considerate-loading.git
 npm install
 npm start
 npm run build

@@ -1,7 +1,7 @@
 
-# Demo: Memory-aware resource loading in React
+# Demo: Memory-based resource loading in React
 
-A demo showing how to use memory-aware resource loading in React.
+A demo showing how to use memory-based resource loading in React.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

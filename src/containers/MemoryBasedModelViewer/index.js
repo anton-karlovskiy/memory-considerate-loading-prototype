@@ -5,6 +5,7 @@ import { useMemoryStatus } from '../../utils/hooks';
 import './memory-based-media.css';
 
 const Model3DViewer = lazy(() => import('../../components/Model3DViewer'));
+const ModelImageViewer = lazy(() => import('../../components/ModelImageViewer'));
 
 const Loading = <Fragment>Loading...</Fragment>;
 
@@ -18,12 +19,16 @@ const MemoryBasedModelViewer = () => {
   let media = null;
   switch(true) {
     case usedMemoryPercent > 75:
-      media = null;
+      media = (
+        <Suspense fallback={Loading}>
+          <Model3DViewer />
+        </Suspense>
+      );
       break;
     case usedMemoryPercent > 0:
       media = (
         <Suspense fallback={Loading}>
-          <Model3DViewer />
+          <ModelImageViewer />
         </Suspense>
       );
       break;

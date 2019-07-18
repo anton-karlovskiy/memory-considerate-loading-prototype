@@ -2,8 +2,8 @@
 import React from 'react';
 import '@google/model-viewer';
 
-import './model-3d-viewer.css';
 import astronaut from '../../assets/models/astronaut/astronaut.glb';
+import './model-3d-viewer.css';
 
 const Model3DViewer = () => {
   return (

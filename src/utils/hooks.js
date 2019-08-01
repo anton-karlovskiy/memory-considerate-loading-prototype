@@ -45,7 +45,6 @@ const useMemoryStatus = () => {
       if (usedMemoryPercent > MAX_PERCENT_THRESHOLD) {
         overLoad = true;
       }
-      console.log('ray : ***** overUsedMemorySize, usedMemoryPercent, overLoad => ', overUsedMemorySize, usedMemoryPercent, overLoad);
       setMemoryStatus({
         totalJSHeapSize: getTotalJSHeapSize(),
         usedJSHeapSize: getUsedJSHeapSize(),

@@ -1,5 +1,5 @@
 {
-  "name": "memory-based-loading",
+  "name": "memory-considerate-loading",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

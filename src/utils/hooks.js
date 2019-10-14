@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const unsupportMessage = 'The Memory Status API is not supported on this platform.';
 
@@ -12,9 +12,7 @@ const useMemoryStatus = () => {
   const isMemorySupported = () => {
     return windowPerformance && windowPerformance.memory;
   };
-
-  const [memoryStatus, setMemoryStatus] = useState(null);
-
+  
   const getTotalJSHeapSize = () => windowPerformance.memory.totalJSHeapSize;
   const getUsedJSHeapSize = () => windowPerformance.memory.usedJSHeapSize;
   const getJSHeapSizeLimit = () => windowPerformance.memory.jsHeapSizeLimit;
@@ -32,32 +30,32 @@ const useMemoryStatus = () => {
     return usedMemoryPercent;
   };
 
-  useEffect(() => {
-    if (isMemorySupported()) {
-      const overUsedMemorySize = getOverUsedMemorySize();
-      const usedMemoryPercent = getUsedMemoryPercent();
-      let overLoad = false;
-      // Check if we've exceeded absolute memory limit
-      if (overUsedMemorySize > 0) {
-        overLoad = true;
-      }
-      // Check if we've exceeded relative memory limit for client
-      if (usedMemoryPercent > MAX_PERCENT_THRESHOLD) {
-        overLoad = true;
-      }
-      setMemoryStatus({
-        totalJSHeapSize: getTotalJSHeapSize(),
-        usedJSHeapSize: getUsedJSHeapSize(),
-        jsHeapSizeLimit: getJSHeapSizeLimit(),
-        overLoad
-      });
-    } else {
-      setMemoryStatus({unsupportMessage});
+  let initialMemoryStatus;
+  if (isMemorySupported()) {
+    const overUsedMemorySize = getOverUsedMemorySize();
+    const usedMemoryPercent = getUsedMemoryPercent();
+    let overLoad = false;
+    // Check if we've exceeded absolute memory limit
+    if (overUsedMemorySize > 0) {
+      overLoad = true;
     }
-  // eslint-disable-next-line
-  }, []);
+    // Check if we've exceeded relative memory limit for client
+    if (usedMemoryPercent > MAX_PERCENT_THRESHOLD) {
+      overLoad = true;
+    }
+    initialMemoryStatus = {
+      totalJSHeapSize: getTotalJSHeapSize(),
+      usedJSHeapSize: getUsedJSHeapSize(),
+      jsHeapSizeLimit: getJSHeapSizeLimit(),
+      overLoad
+    };
+  } else {
+    initialMemoryStatus = {unsupportMessage};
+  }
+  
+  const [memoryStatus, setMemoryStatus] = useState(initialMemoryStatus);
 
-  return memoryStatus;
+  return { memoryStatus, setMemoryStatus };
 };
 
 export { useMemoryStatus };
